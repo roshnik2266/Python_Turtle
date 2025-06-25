@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+  <title>Python Turtle Graphics</title>
+  <link rel="icon" href="img/turtle.jpeg">
+   <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9fc;
+      color: #222;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0 10%;
+    }
+
+    h1 {
+      color: #2a9d8f;
+      margin-top: 20px;
+    }
+
+    hr {
+      border: 1px solid #ccc;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    .code-box {
+      background-color: #f0f0f0;
+      border-left: 5px solid #d9e2ec;
+      padding: 15px;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    pre {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      font-family: monospace;
+      background-color: #d9e2ec;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    button:hover {
+      background-color: #21867a;
+    }
+
+    img {
+      border-radius: 8px;
+      margin: 8px;
+    }
+
+    body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode h1 {
+  color: #90e0ef;
+}
+
+body.dark-mode .code-box {
+  background-color: #1e1e1e;
+  border-left-color: #90e0ef;
+}
+
+body.dark-mode pre {
+  background-color: #2a2a2a;
+  color: #d0d0ff;
+}
+
+body.dark-mode button {
+  background-color: #90e0ef;
+  color: #000;
+}
+
+body.dark-mode button:hover {
+  background-color: #48cae4;
+}
+
+  </style>
+
+    </head>
+
+<script>
+  function copyCode() {
+    const codeElement = document.getElementById("full-code");
+    const text = codeElement.innerText;
+
+    navigator.clipboard.writeText(text)
+      .then(() => alert("✅ Code copied to clipboard!"))
+      .catch(err => alert("❌ Failed to copy: " + err));
+  }
+
+ 
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById("theme-toggle");
+    body.classList.toggle("dark-mode");
+    btn.innerText = body.classList.contains("dark-mode")
+      ? "☀️ Light Mode"
+      : "🌙 Dark Mode";
+  }
+
+
+</script>
+
+
+    <body>
+        <button class="toggle-theme" id="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+
+
+        <center>
+            <h1>🐢PYTHON TURTLE GRAPHICS🐢</h1>
+            <hr>
+        </center>
+            <p>If you're new to programming or just love making creative things, you've come to the right place✨! This website is dedicated to help you learn Python Turtle Graphics through fun and easy-to-understand projects.<br>In this article, we’ll walk through a basic Shape Drawing Program where you can draw circles, triangles, hearts, and more by simply answering a few popup prompts. At the end, you'll find the full code and a copy button to try it yourself!🚀.<br> You’ll be able to draw multiple shapes on your screen with just a few clicks. No complex GUI needed — only pop-up inputs and your imagination🎨.<br>Let's get started! 👇</p>
+            <hr>
+
+        <section>
+        <h2>1: Program Setup🔧</h2>
+        <img src="img/img1.png" width="200">
+        <pre><code>import turtle as t<br>t.getscreen()</code></pre>
+        <p>This sets up the drawing screen.</p>
+        </section>
+    <hr>
+        <section>
+        <h2>2: User Customization🖼️</h2>
+        <img src="img/title.png" width="220">
+        <img src="img/bgcolor.png" width="220">
+        <pre><code>tit = t.textinput("TITLE:", 'Enter the title:')<br>t.title(tit)<br>bg = t.textinput("BG COLOUR:", 'Enter the background colour:')<br>t.bgcolor(bg)</code></pre>
+        <p>The user sets a window title and background color.</p> 
+        </section>
+    <hr>
+        <section>
+        <h2>3: The Drawing Loop🔁 </h2>
+        <img src="img/shape.png" width="320">
+        <p>This loop keeps running until the user says they’re done drawing:</p>
+        <pre><code>while True:<br>  shape = t.textinput("SHAPE:", 'Enter the shape to be drawn...')</code></pre>
+        <p>If the shape isn't valid, we show an error:</p>
+        <pre><code>if shape not in figure_list:<br>   t.textinput("ERROR", f"'{shape}' not in available shapes.\nPress OK to try again.")<br>   continue</code></pre>
+        <img src="img/error.png" width="200">
+        <p>Then we ask the user for basic drawing settings:</p>
+        <pre><code>pensize = t.textinput("PEN SIZE:", 'Enter the pen size:')
+t.pensize(int(pensize))
+
+pencolour = t.textinput("PEN COLOUR:", 'Enter the pen colour:')
+t.pencolor(pencolour)
+
+colour = t.textinput("FILL COLOUR", "Type a fill colour:")
+x_axis = float(t.textinput("Location", "x = ?"))
+y_axis = float(t.textinput("Location", "y = ?"))
+
+confirm = t.textinput("SETUP READY:", 'Type Ok to continue:')
+if confirm.lower() != "ok":
+    continue
+</code></pre>
+        <img src="img/pensize.png" width="200">
+        <img src="img/pencolor.png" width="200">
+        <img src="img/fillcolor.png" width="200"><br>
+        <img src="img/loc-x.png" width="200">
+        <img src="img/loc-y.png" width="200">
+        <img src="img/setup.png" width="200">
+        </section>
+    <hr>
+        <section>
+        <h2>4: Drawing the Shape🖌️</h2>
+        <p>We now move the turtle to the position and begin drawing:.</p>
+        <pre><code>t.penup()
+t.goto(x_axis, y_axis)
+t.pendown()
+t.fillcolor(colour)
+t.begin_fill()
+</code></pre>
+
+
+<h3>🎯 Circle</h3>
+<img src="img/circle.png" width="550">
+<img src="img/cir.png" width="170">
+<h3>🟥 Square</h3>
+<img src="img/square.png" width="550">
+<img src="img/sq.png" width="200">
+<h3>🧱 Rectangle</h3>
+<img src="img/rect.png" width="550"><br>
+<img src="img/rec1.png" width="270">
+<img src="img/rec2.png" width="260">
+<h3>🔺 Triangle</h3>
+<img src="img/tri.png" width="550">
+<img src="img/sq.png" width="200">
+<h3>⭐ Star</h3>
+<img src="img/star.png" width="550">
+<img src="img/st.png" width="210">
+<h3>❤️ Heart</h3>
+<img src="img/heart.png" width="550">
+<img src="img/ht.png" width="250">
+<h3>➖ Line</h3>
+<img src="img/line.png" width="550">
+<img src="img/li.png" width="170">
+<br>
+    </section>
+    <hr>
+        <section>
+            <h2>5: Final Step🔚</h2>
+            <p>We finish filling the shape and ask whether to continue:</p>
+            <img src="img/final.png" width="550">
+            <img src="img/more_shapes.png" width="300">
+        </section>
+        
+    
+    
+    <hr>
+<section>
+  <h2>🧾 Full Code</h2>
+  <p>Here's the complete code for the Shape Drawing Program. You can copy and try it in your Python editor:</p>
+
+  <div class="code-box">
+    <button onclick="copyCode()">📋 Copy Code</button>
+    <pre id="full-code"><code>
+
+import turtle as t
+
+t.getscreen()
+tit = t.textinput("TITLE:", 'Enter the title:')
+t.title(tit)
+bg = t.textinput("BG COLOUR:", 'Enter the background colour:')
+t.bgcolor(bg)
+t.shape("classic")
+
+figure_list = ["circle", "square", "rectangle", "triangle", "star", "heart","line"]
+
+while True:
+    shape = t.textinput("SHAPE:", 'Enter the shape to be drawn (circle/square/rectangle/triangle/star/line/heart):')
+
+    if shape not in figure_list:
+        t.textinput("ERROR", f"'{shape}' not in available shapes.\nPress OK to try again.")
+        continue
+
+    pensize = t.textinput("PEN SIZE:", 'Enter the pen size:')
+    t.pensize(int(pensize))
+
+    pencolour = t.textinput("PEN COLOUR:", 'Enter the pen colour:')
+    t.pencolor(pencolour)
+
+    colour = t.textinput("FILL COLOUR", "Type a fill colour:")
+    x_axis = float(t.textinput("Location", "x = ?"))
+    y_axis = float(t.textinput("Location", "y = ?"))
+
+    confirm = t.textinput("SETUP READY:", 'Type Ok to continue:')
+    if confirm.lower() != "ok":
+        continue
+
+    t.penup()
+    t.goto(x_axis, y_axis)
+    t.pendown()
+    t.fillcolor(colour)
+    t.begin_fill()
+
+    if shape == "circle":
+        size = int(t.textinput("SHAPE SIZE", "Enter the radius:"))
+        t.circle(size)
+
+    elif shape == "square":
+        side = int(t.textinput("SHAPE SIZE", "Enter the side length:"))
+        for _ in range(4):
+            t.forward(side)
+            t.left(90)
+
+    elif shape == "rectangle":
+        width = int(t.textinput("SIZE", "Enter the short edge:"))
+        height = int(t.textinput("SIZE", "Enter the long edge:"))
+        for _ in range(2):
+            t.forward(width)
+            t.left(90)
+            t.forward(height)
+            t.left(90)
+
+    elif shape == "triangle":
+        side = int(t.textinput("SHAPE SIZE", "Enter the side length:"))
+        for _ in range(3):
+            t.forward(side)
+            t.left(120)
+
+    elif shape == "star":
+        size = int(t.textinput("SHAPE SIZE", "Enter the size:"))
+        for _ in range(5):
+            t.forward(size)
+            t.right(144)
+
+    elif shape == "heart":
+        size = int(t.textinput("SHAPE SIZE", "Enter the heart size:"))
+        t.left(50)
+        t.forward(size)
+        t.circle(size * 0.3, 200)
+        t.right(140)
+        t.circle(size * 0.3, 200)
+        t.forward(size)
+        t.setheading(0)
+
+    elif shape == "line":
+        length = int(t.textinput("SHAPE SIZE", "Enter the line length:"))
+        t.forward(length)
+    
+    else:
+        pass
+
+    t.end_fill()
+
+    again = t.textinput("MORE SHAPES?", "Do you want to add more shapes? (yes/no):")
+    if again.lower() != "yes":
+        break
+
+t.mainloop()
+    
+    </code></pre>
+  </div>
+</section>
+
+<script>
+  function copyCode() {
+    const codeElement = document.getElementById("full-code");
+    const text = codeElement.innerText;
+
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        alert("✅ Code copied to clipboard!");
+      })
+      .catch(err => {
+        alert("❌ Failed to copy: " + err);
+      });
+  }
+</script>
+
+<hr>
+<section>
+  <h2>🎨 Appendix: From Code to Canvas</h2>
+  <p>You might be wondering—what can you possibly draw using just circles, squares, and triangles? Well, here’s the secret: <strong>imagination is your real brush</strong>.</p>
+
+  <p>With just these simple shapes, you can recreate almost anything you see around. From houses & flowers to animals or abstract patterns—the possibilities are endless. And hey, the star and heart were already bonus treats in our toolbox!</p>
+
+  <p>Below is a picture I drew using only the shapes available in this program. It took me nearly 50 minutes to complete, and honestly, it might look like a silly waste of time to some...<br>
+  But for me, it was a small spark of creativity. A quiet start to something meaningful. ✨</p>
+ <center><img src="img/my_artwork.png" width="800" alt="Turtle Graphics"></center> 
+</section>
+  
+</section>
+
+</body>
+</html>
